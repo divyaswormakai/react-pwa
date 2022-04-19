@@ -4,12 +4,14 @@ import SelectZodiacSign from "./components/select-zodiac";
 import ZodiacData from "./components/zodiac-data";
 import { API_HOST, API_KEY, LOCAL_STORAGE_KEY } from "./utils/constants";
 import axios from "axios";
+import "./bg.scss";
 
 function App() {
   const [state, setState] = useState({
     status: "loading",
     selectedZodiac: "",
     lastUpdated: dayjs().toDate(),
+    zodiacData: {},
   });
 
   useEffect(() => {
@@ -45,15 +47,26 @@ function App() {
           },
         }
       );
-      console.log(response);
-      setState((previous) => {
-        return {
-          ...previous,
-          selectedZodiac: zodiacSign,
-          lastUpdated: dayjs().format("YYYY-MM-DD"),
-          status: "complete",
-        };
-      });
+      if (response?.status === 200) {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          JSON.stringify({
+            selectedZodiac: zodiacSign,
+            lastUpdated: dayjs().format("YYYY-MM-DD"),
+          })
+        );
+        setState((previous) => {
+          return {
+            ...previous,
+            selectedZodiac: zodiacSign,
+            lastUpdated: dayjs().format("YYYY-MM-DD"),
+            status: "complete",
+            zodiacData: response?.data,
+          };
+        });
+      } else {
+        throw new Error("Could not fetch data");
+      }
     } catch (error) {
       setState((previous) => {
         return {
@@ -67,18 +80,26 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {state?.status === "loading" && <div>Loading</div>}
-      {state?.status === "error" && <div>Error</div>}
-      {state?.status === "complete" && (
-        <>
-          {state?.selectedZodiac?.length <= 0 ? (
-            <SelectZodiacSign />
-          ) : (
-            <ZodiacData />
-          )}
-        </>
-      )}
+    <div className="App relative text-white">
+      <div className="sky h-screen w-screen bg-gray-400 bg-gradient-to-t from-spaceb to-spacet absolute top-0 z-0">
+        <div className="stars"></div>
+        <div className="stars1"></div>
+        <div className="stars2"></div>
+        <div className="shooting-stars"></div>
+      </div>
+      <div className="relative z-10">
+        {state?.status === "loading" && <div>Loading</div>}
+        {state?.status === "error" && <div>Error</div>}
+        {state?.status === "complete" && (
+          <>
+            {state?.selectedZodiac?.length <= 0 ? (
+              <SelectZodiacSign fetchZodiacData={fetchZodiacData} />
+            ) : (
+              <ZodiacData />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
