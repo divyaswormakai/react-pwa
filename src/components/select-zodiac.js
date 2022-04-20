@@ -13,19 +13,19 @@ const SelectZodiacSign = ({ fetchZodiacData }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 gap-8 mt-12">
         {ZODIAC_SIGNS?.map((sign) => (
           <div
-            class="group box-border relative overflow-hidden w-full mx-auto bg-transparent p-8 text-center aspect-square border-2 border-white cursor-pointer "
+            className="group box-border relative overflow-hidden w-full mx-auto bg-transparent p-8 text-center aspect-square border-2 border-white cursor-pointer "
             key={sign?.name}
             onClick={() => setSelectedSign(sign?.name)}
           >
             <div
-              class={`absolute z-1 w-full h-full bg-white left-0  ease-linear duration-150 ${
+              className={`absolute z-1 w-full h-full bg-white left-0  ease-linear duration-150 ${
                 sign?.name === selectedSign
                   ? "top-0"
                   : "top-full group-hover:top-0"
               }`}
             />
             <div
-              class={`relative z-20  font-bold flex flex-col justify-center items-center h-full ease-linear duration-100 ${
+              className={`relative z-20  font-bold flex flex-col justify-center items-center h-full ease-linear duration-100 ${
                 sign?.name === selectedSign
                   ? "scale-150 text-black"
                   : "group-hover:scale-150 group-hover:text-black"
