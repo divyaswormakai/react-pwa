@@ -80,8 +80,8 @@ function App() {
   };
 
   return (
-    <div className="App relative text-white">
-      <div className="sky h-screen w-screen bg-gray-400 bg-gradient-to-t from-spaceb to-spacet absolute top-0 z-0">
+    <div className="App relative text-white min-h-screen min-w-screen">
+      <div className="sky h-full w-full bg-gray-400 bg-gradient-to-t from-spaceb to-spacet absolute top-0 z-0">
         <div className="stars"></div>
         <div className="stars1"></div>
         <div className="stars2"></div>
