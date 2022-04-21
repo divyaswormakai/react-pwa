@@ -113,18 +113,18 @@ function App() {
       <div className="relative z-10 h-100">
         {state?.status === "loading" && (
           <div className="h-screen w-screen flex justify-center items-center text-2xl text-white text-bold flex-col">
-            <div class="flex items-center justify-center ">
+            <div className="flex items-center justify-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-24 h-24 text-white animate-spin"
+                className="w-24 h-24 text-white animate-spin"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1"
                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 />
               </svg>
