@@ -10,6 +10,7 @@ import {
 } from "./utils/constants";
 import axios from "axios";
 import "./bg.scss";
+import ReactGA from "react-ga";
 
 function App() {
   const [state, setState] = useState({
@@ -18,13 +19,14 @@ function App() {
     lastUpdated: dayjs().toDate(),
     zodiacData: {},
   });
+  ReactGA.initialize("UA-162584751-1");
 
   useEffect(() => {
     const savedValue = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (savedValue?.length) {
       const parsedValue = JSON.parse(savedValue);
       if (parsedValue?.selectedZodiac?.length > 0) {
-        if (dayjs().subtract(dayjs(parsedValue?.lastUpdated), "day") > 0) {
+        if (dayjs().diff(dayjs(parsedValue?.lastUpdated), "day") > 0) {
           fetchZodiacData(parsedValue?.selectedZodiac);
         } else if (!parsedValue?.zodiacData) {
           fetchZodiacData(parsedValue?.selectedZodiac);
