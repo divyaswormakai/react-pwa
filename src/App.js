@@ -10,7 +10,7 @@ import {
 } from "./utils/constants";
 import axios from "axios";
 import "./bg.scss";
-import ReactGA from "react-ga";
+// import ReactGA from "react-ga";
 
 function App() {
   const [state, setState] = useState({
@@ -19,7 +19,7 @@ function App() {
     lastUpdated: dayjs().toDate(),
     zodiacData: {},
   });
-  ReactGA.initialize("G-RNSD9L4WKK");
+  // ReactGA.initialize("G-RNSD9L4WKK");
 
   useEffect(() => {
     const savedValue = localStorage.getItem(LOCAL_STORAGE_KEY);
