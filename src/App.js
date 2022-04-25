@@ -19,7 +19,7 @@ function App() {
     lastUpdated: dayjs().toDate(),
     zodiacData: {},
   });
-  ReactGA.initialize("UA-162584751-1");
+  ReactGA.initialize("G-RNSD9L4WKK");
 
   useEffect(() => {
     const savedValue = localStorage.getItem(LOCAL_STORAGE_KEY);
