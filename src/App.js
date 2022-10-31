@@ -106,12 +106,6 @@ function App() {
 
   return (
     <div className="App relative text-white min-h-screen min-w-screen">
-      <script
-        defer
-        data-domain="desohoroscope.com"
-        src="http://52.66.27.106/js/plausible.js"
-      ></script>
-
       <div className="sky h-full w-full bg-gray-400 bg-gradient-to-t from-spaceb to-spacet absolute top-0 z-0">
         <div className="stars"></div>
         <div className="stars1"></div>
